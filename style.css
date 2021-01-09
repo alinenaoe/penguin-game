@@ -1,15 +1,52 @@
-.penguin {
-    width: 60px;
-    height: 100px;
-    background: black;
-    position: absolute;
-    bottom: 0;
+body {
+    background: #9ce4ff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+.penguin {
+    width: 60px;
+    height: 80px;
+    margin-left: 60px;
+    background-image: url(img/penguin.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 80px;
+}
+ 
 .ice-block {
     width: 60px;
     height: 60px;
-    background: blue;
+    background-image: url(img/iceblock.png);
+    position: absolute;
+    bottom: 80px;
+}
+
+@keyframes slideright {
+    from {
+        background-position: 70000%;
+    }
+
+    to {
+        background-position: 0;
+    }
+}
+
+.background {
     position: absolute;
     bottom: 0;
+    width: 100%;
+    height: 200px;
+    background-image: url(img/background.png);
+    background-repeat: repeat-x;
+    animation: slideright 2000s infinite linear;
+}
+
+#game-over {
+    font-family: 'Press Start 2P', cursive;
+    color: #5e6aab;
+    margin-top: 100px;
+    text-align: center;
+    display: none;
 }

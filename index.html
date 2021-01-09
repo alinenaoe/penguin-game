@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>the penguin game</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="script.js" charset="UTF-8" defer></script>
 </head>
 <body>
-    <main>
+    <main id="game">
         <div class="background">
             <div class="penguin"></div>
         </div>
     </main>
+
+    <audio id="penguin-sound" src="haak.mp3"></audio>
+
+    <div id="game-over">
+        <h1>GAME OVER</h1>
+    </div>
 </body>
 </html>

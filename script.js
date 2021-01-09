@@ -1,7 +1,12 @@
+const game = document.getElementById('game');
+const gameOver = document.getElementById('game-over');
 const penguin = document.querySelector('.penguin');
+const penguinSound = document.getElementById('penguin-sound');
 const background = document.querySelector('.background');
+
+
 let isJumping = false;
-let position = 0;
+let position = 80;
 
 // PENGUIN ACTIONS
 
@@ -14,14 +19,15 @@ function handleKeyUp(event) {
 }
 
 function jump() {
+    penguinSound.play();
     isJumping = true;
 
     let upInterval = setInterval(() => {
-        if(position >= 150) {
+        if(position >= 250) {
             clearInterval(upInterval);
             
             let downInterval = setInterval(() => {
-                if(position <= 0) {
+                if(position <= 80) {
                     clearInterval(downInterval);
                     isJumping = false;
                 } else {
@@ -49,12 +55,14 @@ function createIceBlock() {
     iceBlock.style.left = iceBlockPosition + 'px';
 
     let leftInterval = setInterval(() => {
-        if(iceBlockPosition < -60) {
+        if(iceBlockPosition < -120) {
             clearInterval(leftInterval);
             background.removeChild(iceBlock);
-        } else if (iceBlockPosition > 0 && iceBlockPosition < 60 && position < 60 ) {
+        } else if (iceBlockPosition > 0 && iceBlockPosition < 120 && position < 120 ) {
+            // game over
             clearInterval(leftInterval);
-            document.body.innerHTML = '<h1 class="game-over">Game over</h1>';
+            game.remove();
+            gameOver.style.display = "block";             
         } else {
             iceBlockPosition -= 10;
             iceBlock.style.left = iceBlockPosition + 'px'; 
