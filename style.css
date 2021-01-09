@@ -5,3 +5,11 @@
     position: absolute;
     bottom: 0;
 }
+
+.ice-block {
+    width: 60px;
+    height: 60px;
+    background: blue;
+    position: absolute;
+    bottom: 0;
+}
