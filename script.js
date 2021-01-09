@@ -1,10 +1,9 @@
 const penguin = document.querySelector('.penguin');
 const background = document.querySelector('.background');
-
+let isJumping = false;
+let position = 0;
 
 // PENGUIN ACTIONS
-
-let isJumping = false;
 
 function handleKeyUp(event) {
     if(event.keyCode === 32) {
@@ -15,7 +14,6 @@ function handleKeyUp(event) {
 }
 
 function jump() {
-    let position = 0;
     isJumping = true;
 
     let upInterval = setInterval(() => {
@@ -39,7 +37,6 @@ function jump() {
     }, 20)
 }
 
-
 // ICE 
 
 function createIceBlock() {
@@ -48,13 +45,16 @@ function createIceBlock() {
     let randomTime = Math.random() * 6000;
     
     iceBlock.classList.add('ice-block');
-    iceBlock.style.left = iceBlockPosition + 'px';
     background.appendChild(iceBlock);
+    iceBlock.style.left = iceBlockPosition + 'px';
 
     let leftInterval = setInterval(() => {
         if(iceBlockPosition < -60) {
             clearInterval(leftInterval);
             background.removeChild(iceBlock);
+        } else if (iceBlockPosition > 0 && iceBlockPosition < 60 && position < 60 ) {
+            clearInterval(leftInterval);
+            document.body.innerHTML = '<h1 class="game-over">Game over</h1>';
         } else {
             iceBlockPosition -= 10;
             iceBlock.style.left = iceBlockPosition + 'px'; 
