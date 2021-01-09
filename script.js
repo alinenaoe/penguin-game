@@ -3,7 +3,7 @@ const gameOver = document.getElementById('game-over');
 const penguin = document.querySelector('.penguin');
 const penguinSound = document.getElementById('penguin-sound');
 const background = document.querySelector('.background');
-
+const restartButton = document.getElementById('restart');
 
 let isJumping = false;
 let position = 80;
@@ -61,8 +61,12 @@ function createIceBlock() {
         } else if (iceBlockPosition > 0 && iceBlockPosition < 120 && position < 120 ) {
             // game over
             clearInterval(leftInterval);
-            game.remove();
-            gameOver.style.display = "block";             
+            penguin.style.transform = "rotate(-40deg)";
+            setTimeout(() => { 
+                game.remove();
+                gameOver.style.display = "block";
+            }, 500);
+            
         } else {
             iceBlockPosition -= 10;
             iceBlock.style.left = iceBlockPosition + 'px'; 
@@ -76,3 +80,12 @@ function createIceBlock() {
 
 document.addEventListener('keyup', handleKeyUp)
 createIceBlock();
+
+// RESTART GAME
+
+function restartGame() {
+    location.reload();
+}
+
+restartButton.onclick = restartGame;
+

@@ -50,3 +50,15 @@ body {
     text-align: center;
     display: none;
 }
+
+#restart {
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px 50px;
+    margin-top: 20px;
+    border: 2px solid gray;
+    box-shadow: 5px 4px 8px #888888;
+}
+
+#restart:hover {
+    background-color:#bab6b6;
+}
