@@ -56,7 +56,9 @@ function jump() {
 function createIceBlock() {
     const iceBlock = document.createElement('div');
     let iceBlockPosition = 1000;
-    let randomTime = Math.random() * 6000;
+    // let randomTime = Math.random() * 6000;
+
+    let randomTime = Math.floor(Math.random() * 2000) + 500;
     
     iceBlock.classList.add('ice-block');
     background.appendChild(iceBlock);
