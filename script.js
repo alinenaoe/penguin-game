@@ -4,6 +4,10 @@ const penguin = document.querySelector('.penguin');
 const penguinSound = document.getElementById('penguin-sound');
 const background = document.querySelector('.background');
 const restartButton = document.getElementById('restart');
+const pointsContainer = document.getElementById('points');
+const pointsResult = document.getElementById('result');
+
+let points = 0;
 
 let isJumping = false;
 let position = 80;
@@ -15,6 +19,10 @@ function handleKeyUp(event) {
         if(!isJumping) {
             jump();
         }
+    }
+
+    if(event.keyCode === 13) {
+        restartGame();
     }
 }
 
@@ -60,11 +68,13 @@ function createIceBlock() {
             background.removeChild(iceBlock);
         } else if (iceBlockPosition > 0 && iceBlockPosition < 120 && position < 120 ) {
             // game over
+            clearInterval(countingPoints);
             clearInterval(leftInterval);
             penguin.style.transform = "rotate(-40deg)";
             setTimeout(() => { 
                 game.remove();
                 gameOver.style.display = "block";
+                pointsResult.innerHTML = points - 1 + " points";
             }, 500);
             
         } else {
@@ -76,10 +86,19 @@ function createIceBlock() {
     setTimeout(createIceBlock, randomTime);
 }
 
+// POINTS
+
+let countingPoints = setInterval(() => {
+    pointsContainer.innerHTML = points;
+    points += 1;
+}, 100);
+
+
 // START GAME
 
-document.addEventListener('keyup', handleKeyUp)
+document.addEventListener('keyup', handleKeyUp);
 createIceBlock();
+
 
 // RESTART GAME
 

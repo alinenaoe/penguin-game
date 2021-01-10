@@ -5,6 +5,14 @@ body {
     box-sizing: border-box;
 }
 
+#points {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    position: absolute;
+    top: 30px;
+    right: 100px;
+}
+
 .penguin {
     width: 60px;
     height: 80px;
